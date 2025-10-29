@@ -128,5 +128,5 @@ const closeModal = () => {
 
 
 <style scoped>
-@import "../styles/tickets.css";
+@import "../styles/Tickets.css";
 </style>
