@@ -19,7 +19,3 @@ onMounted(() => {
 });
 onBeforeUnmount(() => clearTimeout(timer));
 </script>
-
-<style scoped>
-@import "../styles/toast.css";
-</style>
