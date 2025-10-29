@@ -1,66 +1,86 @@
 # hng-ticket-app-vue
 
-This template should help get you started developing with Vue 3 in Vite.
+A small Vue 3 + Vite ticketing app template used for HNG tasks.
 
-## Recommended IDE Setup
+This project contains a simple SPA with these pages:
+- `/` — Landing page
+- `/login` — Login page
+- `/signup` — Signup page
+- `/dashboard` — Dashboard (protected area)
+- `/tickets` — Tickets list
 
-[VS Code](https://code.visualstudio.com/) + [Vue (Official)](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+## Quick start
 
-## Recommended Browser Setup
+Prerequisites:
+- Node.js 14+ (recommended: 18+)
+- npm (or yarn/pnpm)
 
-- Chromium-based browsers (Chrome, Edge, Brave, etc.):
-  - [Vue.js devtools](https://chromewebstore.google.com/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd) 
-  - [Turn on Custom Object Formatter in Chrome DevTools](http://bit.ly/object-formatters)
-- Firefox:
-  - [Vue.js devtools](https://addons.mozilla.org/en-US/firefox/addon/vue-js-devtools/)
-  - [Turn on Custom Object Formatter in Firefox DevTools](https://fxdx.dev/firefox-devtools-custom-object-formatters/)
+Install dependencies:
 
-## Customize configuration
-
-See [Vite Configuration Reference](https://vite.dev/config/).
-
-## Project Setup
-
-```sh
+```powershell
 npm install
 ```
 
-### Compile and Hot-Reload for Development
+Start dev server (hot reload):
 
-```sh
+```powershell
 npm run dev
 ```
 
-### Compile and Minify for Production
+Open the app in your browser at the URL printed by Vite (usually `http://localhost:5173`).
 
-```sh
-npm run build
+## Useful scripts
+
+- npm run dev — start development server
+- npm run build — production build
+- npm run preview — preview production build locally
+- npm run test:unit — run Vitest unit tests
+- npm run test:e2e:dev — run Cypress e2e against dev server
+- npm run lint — run ESLint
+
+## Routes
+
+The app's client-side routes live in `src/router/index.js`. If a page (for example the Dashboard) does not open, check these:
+1. That `router` is imported and used in `src/main.js` (app.use(router)).
+2. That the route path `/dashboard` exists in `src/router/index.js` and its component import is correct.
+
+## Troubleshooting — Dashboard not opening
+
+If you navigate to `/dashboard` and nothing shows or you get a blank page:
+
+- Check the browser console (F12) for runtime errors. Common causes:
+  - Missing or wrong import in `src/router/index.js` (component not found).
+  - A runtime error thrown during component mount (check error stack).
+- Verify `src/main.js` mounts the router:
+
+```js
+import { createApp } from 'vue'
+import App from './App.vue'
+import router from './router/index.js'
+
+const app = createApp(App)
+app.use(router)
+app.mount('#app')
 ```
 
-### Run Unit Tests with [Vitest](https://vitest.dev/)
+- Open the terminal where you ran `npm run dev` and inspect the Vite output for build-time errors.
+- If you recently renamed branches or files, ensure there are no stale caches; try stopping the dev server and restarting it.
 
-```sh
-npm run test:unit
+If you want, I can help debug the Dashboard specifically — tell me what you see in the browser console or paste any error messages.
+
+## Contributing
+
+Small improvements and fixes welcome. Typical workflow:
+
+```powershell
+git checkout -b fix/your-change
+# make changes
+git add -A
+git commit -m "fix: describe change"
+git push origin fix/your-change
+# create PR on GitHub
 ```
 
-### Run End-to-End Tests with [Cypress](https://www.cypress.io/)
+## License
 
-```sh
-npm run test:e2e:dev
-```
-
-This runs the end-to-end tests against the Vite development server.
-It is much faster than the production build.
-
-But it's still recommended to test the production build with `test:e2e` before deploying (e.g. in CI environments):
-
-```sh
-npm run build
-npm run test:e2e
-```
-
-### Lint with [ESLint](https://eslint.org/)
-
-```sh
-npm run lint
-```
+MIT
