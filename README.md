@@ -1,4 +1,6 @@
 # hng-ticket-app-vue
+LIVE URL - https://hng-tickets-app-vue.netlify.app
+Repo Link - https://github.com/Gerald-2-ine/hng-ticket-app-vue
 
 A small Vue 3 + Vite ticketing app template used for HNG tasks.
 
