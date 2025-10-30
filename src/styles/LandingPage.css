@@ -19,6 +19,7 @@
   margin: 0 auto;
   z-index: 2;
   position: relative;
+  min-height: 65vh;
 }
 
 .hero h1 {
